@@ -12,15 +12,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
-        <form action="${pageContext.servletContext.contextPath}/registrasi" method="post">
-            <div>
-                <label for="nomorRegister">Nomor Register</label>
-                <input type="text" name="nomorRegister" id="nomorRegister" disabled="${registrasi.nomorRegister}">
-            </div>
+    <body>    
+        <form action="${pageContext.servletContext.contextPath}/registrasi/proses" method="post">
             <div>
                 <label for="namaNasabah">Nama Nasabah</label>
-                <input type="text" name="namaNasabah" id="namaNasabah"
+                <input type="text" name="namaNasabah" id="namaNasabah"/>
             </div>
             <div>
                 <label for="jenisKelamin">Jenis Kelamin</label>

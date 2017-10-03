@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gmail.regahruzty.aplikasi-deposito</groupId>
-    <artifactId>AplikasiDeposito</artifactId>
+    <artifactId>app-deposito</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>AplikasiDeposito</name>
+    <name>Aplikasi Deposito</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
