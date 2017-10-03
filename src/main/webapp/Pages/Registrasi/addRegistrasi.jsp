@@ -4,6 +4,7 @@
     Author     : Diani
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,22 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form action="${pageContext.servletContext.contextPath}/registrasi" method="post">
+            <div>
+                <label for="nomorRegister">Nomor Register</label>
+                <input type="text" name="nomorRegister" id="nomorRegister" disabled="${registrasi.nomorRegister}">
+            </div>
+            <div>
+                <label for="namaNasabah">Nama Nasabah</label>
+                <input type="text" name="namaNasabah" id="namaNasabah"
+            </div>
+            <div>
+                <label for="jenisKelamin">Jenis Kelamin</label>
+                <input type="radio" name="jenisKelamin" value="Laki-Laki"/>Laki-Laki
+                <input type="radio" name="jenisKelamin" value="Perempuan"/>Perempuan
+            </div>
+            <button type="submit">Simpan</button>
+            <button type="reset">Reset</button>        
+        </form>    
     </body>
 </html>
