@@ -15,6 +15,7 @@
     </head>
     <body>
         <h1>Daftar Nasabah</h1>
+        <a href="${pageContext.servletContext.contextPath}/registrasi/addnasabah" style="color: yellowgreen" style="">Tambah</a>
         <table border="3">
             <thead>
                 <tr>
@@ -22,17 +23,27 @@
                     <th>Nomor Registrasi</th>
                     <th>Nama Nasabah</th>
                     <th>Jenis Kelamin</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${listRegistrasi}" var="a" varStatus="index">
+                <c:forEach items="${listRegistrasi}" var="s" varStatus="index">
                     <tr>
                         <td>${index.count}</td>
-                        <td><fmt:formatNumber type="number" minIntegerDigits="3" value="${a.nomorRegister}"/></td>
-                        <td>${a.namaNasabah}</td>
-                        <td>${a.jenisKelamin}</td>
+                        <td><fmt:formatNumber type="number" minIntegerDigits="3" value="${s.nomorRegister}"/></td>
+                        <td>${s.namaNasabah}</td>
+                        <td>${s.jenisKelamin}</td>
+                        <td> 
+                            <a href="${pageContext.servletContext.contextPath}/registrasi/update?nomorRegister=${s.nomorRegister}">Update</a>
+                            &nbsp;
+                            <form action="${pageContext.servletContext.contextPath}/registrasi/delete" method="post">
+                                <input type="hidden" name="nomorRegister" value="${s.nomorRegister}"
+                                       <button type="submit">hapus</button>       
+                            </form>
+                        </td>
                     </tr>
                 </c:forEach>
+
             </tbody>
         </table>    
     </body>

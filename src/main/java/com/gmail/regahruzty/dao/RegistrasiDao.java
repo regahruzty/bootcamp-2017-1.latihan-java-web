@@ -80,6 +80,39 @@ public class RegistrasiDao {
         
     }
 
+    public Registrasi cariRegisterDenganNomorRegister(Integer nomorRegister) throws SQLException {
+        
+        Connection connection = KonfigurasiDB.getDataSource().getConnection();
+        String sql = "select * from latihan_2.registrasi where nomor_register = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, nomorRegister);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        Registrasi registrasi = new Registrasi();
+        if(resultSet.next()) {
+            registrasi.setNomorRegister(resultSet.getInt("nomor_register"));
+            registrasi.setNamaNasabah(resultSet.getString("nama_nasabah"));
+            registrasi.setJenisKelamin(resultSet.getString("jenis_kelamin"));
+        }
+        return registrasi;
+    }
+
+    public void update(Registrasi registrasi) throws SQLException {
+
+        Connection connection = KonfigurasiDB.getDataSource().getConnection();
+        String sql = "update latihan_2.registrasi set nama_nasabah = ?, jenis_kelamin = ? where nomor_register = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, registrasi.getNamaNasabah());
+        preparedStatement.setString(2, registrasi.getJenisKelamin());
+        preparedStatement.setInt(3, registrasi.getNomorRegister());
+        
+        
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+        connection.close();
+        
+        
+    }
+
 }
 
     
