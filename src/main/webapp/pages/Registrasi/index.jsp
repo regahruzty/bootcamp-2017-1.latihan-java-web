@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,7 +28,7 @@
                 <c:forEach items="${listRegistrasi}" var="a" varStatus="index">
                     <tr>
                         <td>${index.count}</td>
-                        <td>${a.nomorRegister}</td>
+                        <td><fmt:formatNumber type="number" minIntegerDigits="3" value="${a.nomorRegister}"/></td>
                         <td>${a.namaNasabah}</td>
                         <td>${a.jenisKelamin}</td>
                     </tr>

@@ -17,7 +17,9 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -45,14 +47,32 @@ public class RegistrasiDao {
         return listRegistrasi;
     }
     
+    public Integer dataNomorRegister() throws SQLException {
+        Integer value = 0;
+        Connection connection = KonfigurasiDB.getDataSource().getConnection();
+        String sql = "select nextval('latihan_2.registrasi_nomor_register_seq')";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        if (resultSet.next()) {
+            value = resultSet.getInt(1);
+    }
+        resultSet.close();
+        statement.close();
+        connection.close();
+        return value;
+    }
+    
     public void save(Registrasi registrasi) throws SQLException {
         
         Connection connection = KonfigurasiDB.getDataSource().getConnection();
-        String sql = "insert into latihan_2.registrasi(nomor_register, nama_nasabah, jenis_kelamin) values (nextval('latihan_2.registrasi_nomor_register_seq'), ?, ?)";
+        String sql = "insert into latihan_2.registrasi(nomor_register, nama_nasabah, jenis_kelamin) values (?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, registrasi.getNamaNasabah());
-        preparedStatement.setString(2, registrasi.getJenisKelamin());
+        preparedStatement.setInt(1, registrasi.getNomorRegister());
+        preparedStatement.setString(2, registrasi.getNamaNasabah());
+        preparedStatement.setString(3, registrasi.getJenisKelamin());
         preparedStatement.executeUpdate();
+        
+        
         
         preparedStatement.close();
         connection.close();
