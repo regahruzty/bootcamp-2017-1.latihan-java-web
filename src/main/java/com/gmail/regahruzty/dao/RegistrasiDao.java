@@ -23,13 +23,11 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
 public class RegistrasiDao {
 
     public List<Registrasi> semuaDataRegistrasi() throws SQLException {
         List<Registrasi> listRegistrasi = new ArrayList<>();
-        
+
         Connection connection = KonfigurasiDB.getDataSource().getConnection();
         String sql = "select nomor_register, nama_nasabah, jenis_kelamin from latihan_2.registrasi_view3 order by nomor_register";
         Statement statement = connection.createStatement();
@@ -46,7 +44,7 @@ public class RegistrasiDao {
         connection.close();
         return listRegistrasi;
     }
-    
+
     public Integer dataNomorRegister() throws SQLException {
         Integer value = 0;
         Connection connection = KonfigurasiDB.getDataSource().getConnection();
@@ -55,15 +53,15 @@ public class RegistrasiDao {
         ResultSet resultSet = statement.executeQuery(sql);
         if (resultSet.next()) {
             value = resultSet.getInt(1);
-    }
+        }
         resultSet.close();
         statement.close();
         connection.close();
         return value;
     }
-    
+
     public void save(Registrasi registrasi) throws SQLException {
-        
+
         Connection connection = KonfigurasiDB.getDataSource().getConnection();
         String sql = "insert into latihan_2.registrasi(nomor_register, nama_nasabah, jenis_kelamin) values (?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -71,24 +69,21 @@ public class RegistrasiDao {
         preparedStatement.setString(2, registrasi.getNamaNasabah());
         preparedStatement.setString(3, registrasi.getJenisKelamin());
         preparedStatement.executeUpdate();
-        
-        
-        
+
         preparedStatement.close();
         connection.close();
-                
-        
+
     }
 
     public Registrasi cariRegisterDenganNomorRegister(Integer nomorRegister) throws SQLException {
-        
+
         Connection connection = KonfigurasiDB.getDataSource().getConnection();
         String sql = "select * from latihan_2.registrasi where nomor_register = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, nomorRegister);
         ResultSet resultSet = preparedStatement.executeQuery();
         Registrasi registrasi = new Registrasi();
-        if(resultSet.next()) {
+        if (resultSet.next()) {
             registrasi.setNomorRegister(resultSet.getInt("nomor_register"));
             registrasi.setNamaNasabah(resultSet.getString("nama_nasabah"));
             registrasi.setJenisKelamin(resultSet.getString("jenis_kelamin"));
@@ -104,18 +99,24 @@ public class RegistrasiDao {
         preparedStatement.setString(1, registrasi.getNamaNasabah());
         preparedStatement.setString(2, registrasi.getJenisKelamin());
         preparedStatement.setInt(3, registrasi.getNomorRegister());
-        
-        
+
         preparedStatement.executeUpdate();
         preparedStatement.close();
         connection.close();
-        
-        
+
+    }
+
+    public void hapusRegistrasiByNomorRegistrasi(Integer nomorRegister) throws SQLException {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        String sql = "delete from latihan_2.registrasi where nomor_register = ? ";
+        Connection connection = KonfigurasiDB.getDataSource().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, nomorRegister);
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+        connection.close();
+
     }
 
 }
-
-    
-    
-    
-

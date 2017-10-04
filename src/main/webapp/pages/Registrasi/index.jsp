@@ -37,8 +37,8 @@
                             <a href="${pageContext.servletContext.contextPath}/registrasi/update?nomorRegister=${s.nomorRegister}">Update</a>
                             &nbsp;
                             <form action="${pageContext.servletContext.contextPath}/registrasi/delete" method="post">
-                                <input type="hidden" name="nomorRegister" value="${s.nomorRegister}"
-                                       <button type="submit">hapus</button>       
+                                <input type="hidden" name="nomorRegister" value="${s.nomorRegister}"/>
+                                       <button type="submit">Hapus</button>       
                             </form>
                         </td>
                     </tr>
