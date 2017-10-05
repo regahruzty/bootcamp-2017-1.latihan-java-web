@@ -16,7 +16,8 @@
         <form action="${pageContext.servletContext.contextPath}/registrasi/proses" method="post">
             <div>
                 <label for="dataNomorRegister">Nomor Register</label>
-                <input type="text" name="dataNomorRegister" value="${dataNomorRegister}" readonly="readonly"/>        
+                <input type="text" name="dataNomorRegister" value="${dataNomorRegister}" readonly="readonly"/>       
+            </div>    
             <div>
                 <label for="namaNasabah">Nama Nasabah</label>
                 <input type="text" name="namaNasabah" id="namaNasabah"/>
