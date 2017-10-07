@@ -22,6 +22,15 @@ public class Deposito {
     private Float bungaBulanan;
     private LocalDate jatuhTempo;
     private Float bungaPerAnum;
+    private Date tanggalBuat;
+
+    public Date getTanggalBuat() {
+        return tanggalBuat;
+    }
+
+    public void setTanggalBuat(Date tanggalBuat) {
+        this.tanggalBuat = tanggalBuat;
+    }
 
     public Integer getId() {
         return id;

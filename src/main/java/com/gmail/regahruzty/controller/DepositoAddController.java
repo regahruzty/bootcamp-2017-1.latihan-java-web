@@ -35,6 +35,7 @@ public class DepositoAddController extends HttpServlet{
         try {
             //        super.doGet(req, resp); //To change body of generated methods, choose Tools | Templates.
             
+            
             RegistrasiDao registrasiDao = new RegistrasiDao();
             List<Registrasi> listRegister = registrasiDao.semuaDataRegistrasi();
             req.setAttribute("listRegister", listRegister);
@@ -69,7 +70,7 @@ public class DepositoAddController extends HttpServlet{
         } catch (SQLException ex) {
             Logger.getLogger(DepositoAddController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        resp.sendRedirect(req.getServletContext().getContextPath() + "/deposito/kartu");
+        resp.sendRedirect(req.getServletContext().getContextPath() + "/deposito/list");
 
         
     }

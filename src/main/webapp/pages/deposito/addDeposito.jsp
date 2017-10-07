@@ -17,7 +17,7 @@
                 <label for="nomorRegister">Nomor Register Nasabah</label>
                 <select name="nomorRegister" id="nomorRegister">
                     <c:forEach items="${listRegister}" var="p">
-                        <option value="${p.nomorRegister}">${p.nomorRegister}││${p.namaNasabah}</option>
+                        <option value="${p.nomorRegister}">${p.nomorRegister} │ ${p.namaNasabah}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -38,8 +38,7 @@
             <div>
                 <label for ="bungaPerAnum">Bunga per Anum</label>
                 <input type="text" name="bungaPerAnum" id="bungaPerAnum">
-            <button type="submit">Simpan</button>
-            
+                <button type="submit">Simpan</button>
         </form>    
     </body>
 </html>

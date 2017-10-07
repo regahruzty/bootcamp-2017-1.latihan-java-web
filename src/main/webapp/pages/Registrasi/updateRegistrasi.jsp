@@ -15,7 +15,7 @@
         <h1>Update Form Registrasi</h1>
         <form action="${pageContext.servletContext.contextPath}/registrasi/update" method="post">
 
-            <input type="hidden" name="nomorRegister" value="${s.nomorRegister}"
+            <input type="hidden" name="nomorRegister" value="${s.nomorRegister}"/>
             <div>
                 <label for="nomorRegister">Nomor Register</label>
                 <input type="text" name="nomorRegister" value="${s.nomorRegister}" readonly="readonly"/>        
@@ -24,7 +24,7 @@
 
             <div>
                 <label for="namaNasabah">Nama Nasabah</label>
-                <input type="text" name="namaNasabah" value="${s.namaNasabah}"
+                <input type="text" name="namaNasabah" value="${s.namaNasabah}"/>
             </div>
             <div>
                 <label for="jenisKelamin">Jenis Kelamin</label>
